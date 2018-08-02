@@ -1,0 +1,142 @@
+body, html{
+  height: 100%;
+}
+
+:root {
+  --space: 1.5em 0;
+  --space: 2em 0;
+}
+
+.Site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+  margin: auto;
+}
+
+.Site-content {
+  flex: 1 0 auto;
+  padding: var(--space) var(--space) 0;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+}
+
+.Site-content:after {
+  content: '\00a0';
+  display: block;
+  margin-top: var(--space);
+  height: 0;
+  visibility: hidden;
+}
+
+.App{
+  /* background-image: url('./components/Images/adviror.jpg'); */
+   /* Full height */
+   background-image: url('../src/components/Images/wood.jpg');
+   background-color: darkblue;
+   height: 100%; 
+
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   text-align: center;
+   margin: auto;
+}
+
+
+
+/* body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+#navText {
+  color: rgb(58, 154, 10);
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+p {
+  color: rgb(145, 18, 9);
+  font-size: 50px;
+}
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.pages {
+  display: flex;
+  justify-content: center;
+}
+
+ul padding {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.pages li {
+  margin: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rightside {
+  display: flex;
+  justify-content: right;
+}
+
+
+.userRanking {
+  display: flex;
+  justify-content: center;
+}
+
+#messageDiv {
+  border: 1px solid blue;
+  color: darkgoldenrod;
+}
+
+.messageClass {
+  border: 1px solid orange;
+  padding: 10px
+}
+
+
+} */
+

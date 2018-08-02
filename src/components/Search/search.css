@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+#search{
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5vh;
+    font-family: 'Righteous', cursive;
+}
+#field{
+    margin: auto;
+}
+
+#btn{
+    margin-bottom: 2.5vh;
+    width: 40vh;
+}

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+#jumboText{
+    padding-top: 20%;
+    font-family: 'Righteous', cursive;
+}
+
+#back{
+    background-image: url("./coffee.jpg");
+    background-size: 100vw;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    /* background-position: center;  */
+    height: 90vh;
+    margin-top: 10vh;
+}
+
+#contButton{
+    width: 50vw;
+    margin: auto;
+}
+
+#btn{
+    margin-bottom: 2.5vh;
+}
