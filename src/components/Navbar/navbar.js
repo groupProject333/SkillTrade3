@@ -73,124 +73,40 @@ class Navbar2 extends Component {
 
     return (
       <section>
-        {/* <Navbar color="dark" className="text-success text-center clearfix" dark>
-
-          <Nav navbar>
-            {loggedIn ? (
-              <section className="float-left">
-                <NavItem>
-                  <Link to="#" id="navText" onClick={this.logout}>
-                    <span className="text-success">Logout</span>
-                  </Link>
-                </NavItem>
-              </section>
-            ) : (
-              <section className="float-left">
-                <NavItem>
-                  <Link to="/">
-                    <span id="navText" className="text-success">
-                      Skill-Trade Home
-                    </span>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to="/login">
-                    <span id="navText" className="text-success">
-                      Login
-                    </span>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to="/signup">
-                    <span id="navText" className="text-success">
-                      Sign Up
-                    </span>
-                  </Link>
-                </NavItem>
-              </section>
-            )}
-            <section className="float-right">
-              <NavItem>
-                <Link to="/browse">
-                  <span id="navText" className="text-success">
-                    Browse
-                  </span>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/topcont">
-                  <span id="navText" className="text-success">
-                    Top Contributors
-                  </span>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/profile">
-                  <span id="navText" className="text-success">
-                    Profile
-                  </span>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/addListing">
-                  <span id="navText" className="text-success">
-                    Add a New Listing
-                  </span>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/messaging/">
-                  <span id="navText" className="text-success">
-                    Messages
-                  </span>
-                </Link>
-              </NavItem>
-            </section>
-          </Nav>
-          {/* </Collapse> */}
-        {/* </Container> */}
-        {/* </Navbar> */}
-        <div>
-          <Navbar color="light" light expand="md">
-            <NavbarBrand id="navText">
-            Skill Trade
-            </NavbarBrand>
+            <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">Skill Trade</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 {loggedIn ? (
-                  <section className="float-left" id="logFormat">
+                  <section className="float-left">
                     <NavItem>
                       <Link to="#" id="navText" onClick={this.logout}>
-                        <span>
-                          Logout
-                          </span>
+                        <span className="text-success">Logout</span>
                       </Link>
                     </NavItem>
                   </section>
                 ) : (
-                  <NavItem>
-                  {/* <section> */}
-                    <section className="float-left" id="logFormat">
+                  <section>
+                    <section className="float-left">
                       <NavItem>
                         <Link to="/login">
-                          <span id="navText">
+                          <span id="navText" className="text-success">
                             Login
                           </span>
                         </Link>
                       </NavItem>
                     </section>
-                    <section className="float-right" id="logFormat">
+                    <section className="float-right">
                       <NavItem>
                         <Link to="/signup">
-                          <span id="navText">
+                          <span id="navText" className="text-success">
                             Sign Up
                           </span>
                         </Link>
                       </NavItem>
                     </section>
-                  {/* </section> */}
-                  </NavItem>
+                  </section>
                 )}
                 <NavItem>
                   <NavLink
@@ -203,7 +119,7 @@ class Navbar2 extends Component {
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
-                    <span id="navText">
+                    <span id="navText" className="text-success">
                       Options
                     </span>
                   </DropdownToggle>
@@ -211,7 +127,7 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/browse">
-                          <span id="navText">
+                          <span id="navText" className="text-success">
                             Browse
                           </span>
                         </Link>
@@ -220,7 +136,7 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/profile">
-                          <span id="navText">
+                          <span id="navText" className="text-success">
                             Profile
                           </span>
                         </Link>
@@ -229,7 +145,7 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/addListing">
-                          <span id="navText">
+                          <span id="navText" className="text-success">
                             Add a New Listing
                           </span>
                         </Link>
@@ -238,7 +154,7 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/messaging/">
-                          <span id="navText">
+                          <span id="navText" className="text-success">
                             Messages
                           </span>
                         </Link>
@@ -251,87 +167,7 @@ class Navbar2 extends Component {
               </Nav>
             </Collapse>
           </Navbar>
-        </div>
       </section>
-
-      // <div>
-      //   <header>
-      //   <Navbar>
-      //   <Nav className = "cf" navbar>
-      //   <Container id="contain">
-      //         {loggedIn ? (
-      //         <section className="float-left">
-      //         <NavItem>
-      //           <NavLink
-      //             to="#"
-      //             id="navText"
-      //             className="text-secondary"
-      //             onClick={this.logout}
-      //           >
-      //             <span className="text-secondary">
-      //             Logout
-      //             </span>
-      //           </NavLink>
-      //           </NavItem>
-      //           <NavbarBrand>
-      //             Skill-Trade App
-      //           </NavbarBrand>
-      //         </section>
-      //       ) : (
-      //         <section className="float-left">
-      //         <NavItem>
-      //           <Link to="/">
-      //             <span id="navText">
-      //             Home
-      //             </span>
-      //           </Link>
-      //         </NavItem>
-      //         <NavItem>
-      //           <Link to="/login">
-      //             <span id="navText">
-      //             Login
-      //             </span>
-      //           </Link>
-      //         </NavItem>
-      //         <NavItem>
-      //           <Link to="/signup">
-      //             <span id="navText">Sign Up</span>
-      //           </Link>
-      //           </NavItem>
-      //         </section>
-      //       )}
-      //     <section className="float-right">
-      //         <NavItem>
-      //           <Link to="/browse">
-      //             <span id="navText" >Browse</span>
-      //           </Link>
-      //           </NavItem>
-      //           <NavItem>
-      //           <Link to="/topcont" >
-      //             <span id="navText" >Top Contributors</span>
-      //           </Link>
-      //           </NavItem>
-      //           <NavItem>
-      //           <Link to="/profile" >
-      //             <span id="navText" >Profile</span>
-      //           </Link>
-      //           </NavItem>
-      //           <NavItem>
-      //           <Link to="/addListing">
-      //             <span id="navText" >Add a New Listing</span>
-      //           </Link>
-      //           </NavItem>
-      //             <NavItem>
-      //           <Link to="/messaging/" >
-      //             <span id="navText">Messages</span>
-      //           </Link>
-      //           </NavItem>
-      //         </section>
-      //       </Container>
-      //       </Nav>
-      //       </Navbar>
-      //   </header>
-      // </div>
     );
   }
 }

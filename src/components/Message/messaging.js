@@ -82,7 +82,8 @@ class Messaging extends Component {
 
   removeMessage = id => {
     console.log(id + "LINE 84!!!!!!!!!!!!!!!!!!!!!!!!1");
-    document.getElementById(id).remove();
+    // document.getElementById(id).remove();
+    ReactDOM.unmountComponentAtNode(id)
   };
   deleteFromProps = id => {
     console.log(this.state.messageProps[0].data);
@@ -133,6 +134,12 @@ class Messaging extends Component {
     .then(res => {
       console.log("128")
       console.log(res)
+      this.setState({
+        chipsToSend: "0",
+        body: "",
+        receiver: "",
+      })
+      console.log("142")
       this.getUser(this.props.username)
     })
   }
@@ -166,11 +173,15 @@ class Messaging extends Component {
     this.setState({
       [name]: value
     });
+    console.log(this.state.body)
+    console.log(this.state.receiver)
+
   };
   provideMessagesB = () => {
     if (this.state.messageProps.length === 0) {
       this.setState({ popoverOpen: true });
       document.getElementById("messageDiv").innerHTML = "";
+      
     } else {
       console.log(this.state.messageProps);
       let data = this.state.messageProps;
@@ -248,7 +259,12 @@ class Messaging extends Component {
 
   checkChips = event => {
     event.preventDefault();
-    if (this.state.chipsToSend > this.state.chips) {
+    if (this.state.chipsToSend > 0 && this.state.receiver === this.props.username) {
+      console.log("cant send chips to yourself");
+      document.getElementById("chipChecker").textContent = "You Can't Send Chips To Yourself";
+      this.setState({ collapse: true });
+    }
+    else if (this.state.chipsToSend > this.state.chips) {
       console.log("not enough chips");
       document.getElementById("chipChecker").textContent = "You Don't Have Enough Chips";
       this.setState({ collapse: true });
@@ -273,6 +289,17 @@ class Messaging extends Component {
     this.setState({
       chipsToSend: ""
     })
+  };
+  getValue = () => {
+    var value = this.refs.form.getValue();
+    if (value) {
+      console.log(value);
+      this.setState({value: null}); // <-- reset value
+    }
+  }
+  showMessageList = event => {
+    event.preventDefault();
+    this.getUser(this.props.id)
   }
   render() {
     return (
@@ -294,12 +321,13 @@ class Messaging extends Component {
             <h2>KarmaChips: {this.state.chips}</h2>
             {/* <h2>You have {this.state.messageBody.length} messages</h2> */}
             <h3>Send Message</h3>
-            <Form>
+            <Form ref="form">
               <FormGroup>
                 <Label for="exampleText">Message</Label>
                 <Input
                   type="textarea"
                   name="body"
+                  ref="body"
                   id="exampleText"
                   onChange={this.handleInputChange}
                   value={this.state.body}
@@ -312,6 +340,7 @@ class Messaging extends Component {
                   type="textarea"
                   name="receiver"
                   id="exampleEmail"
+                  ref="user"
                   onChange={this.handleInputChange}
                   value={this.state.receiver}
                   bsSize="lg"
@@ -338,6 +367,7 @@ class Messaging extends Component {
                             type="number"
                             name="chipsToSend"
                             id="chipsToSend"
+                            ref="chips"
                             placeholder={this.state.chipsToSend}
                             onChange={this.handleInputChange}
                             value={this.state.chipsToSend}
@@ -366,7 +396,7 @@ class Messaging extends Component {
               </div>
               <Button
                 disabled={!(this.state.receiver && this.state.body)}
-                onClick={this.handleFormSubmit}
+                onClick={this.handleFormSubmit} 
                 color="primary"
                 size="lg"
                 block
@@ -383,7 +413,7 @@ class Messaging extends Component {
                 size="lg"
                 block
               >
-                Show Messages
+                Refresh Inbox
               </Button>
 
               <MessageList>

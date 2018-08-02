@@ -29,13 +29,13 @@ module.exports = {
     },
     addReview: function(req, res) {
         console.log("profilecontroller line 51");
-        var id = mongoose.Types.ObjectId(req.body.receiverId);
-        console.log(id + "nline 49");
+        // var id = mongoose.Types.ObjectId(req.body.receiverId);
+        // console.log(id + "nline 49");
         db.Review.create(req.body).then(function(dbReview) {
           console.log(dbReview);
           console.log(dbReview.receiverId + "Line 57");
           var id = dbReview.receiverId;
-          // var id = mongoose.Types.ObjectId(dbReview.receiverId)
+        //   var id = mongoose.Types.ObjectId(dbReview.receiverId)
           db.User.findByIdAndUpdate(
             { _id: id },
             { $push: { review: dbReview._id } },
