@@ -23,7 +23,14 @@ module.exports = {
 			  })
 		  })
 	      .catch(err => res.status(422).json(err));
-	  }
+	},
+	findByTags: function(req, res) {
+		console.log("here controller")
+		console.log(req.body.searchTags)
+		db.Listing.find( { hashtags: { $all: req.body.searchTags } } )
+		.then(function(dbListing) { res.json(dbListing)
+	})
+}
 
 	// create: function(req, res) {
 	// 	console.log('!!!!HERE:CONTROLLERS' + req.body.receiver);

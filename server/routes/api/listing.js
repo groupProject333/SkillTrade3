@@ -4,6 +4,7 @@ const listController = require('../../controllers/listController');
 
 router.post('/', listController.create);
 router.get('/', listController.findAll)
+router.put('/search/', listController.findByTags)
 
 
 
