@@ -1,18 +1,27 @@
-const Listing = require('../database/models/listing');
+// const Listing = require('../database/models/listing');
+const db = require("../database/models");
 
 module.exports = {
 	findAll: function(req, res) {
-		Listing
+		db.Listing
 			.find(req.query)
 			.sort({ date: -1 })
 			.then((dbModel) => res.json(dbModel))
 			.catch((err) => res.status(422).json(err));
 	},
 	create: function(req, res) {
-        console.log('hit controller');
-	    Listing
+		console.log('hit controller');
+		console.log(req.body)
+	    db.Listing
 	      .create(req.body)
-	      .then(dbModel => res.json(dbModel))
+	      .then(dbModel => {
+			  console.log(".then listController")
+			  console.log(dbModel)
+			  db.User.findOneAndUpdate({ username: dbModel.owner}, {$push: {listing: dbModel._id}}, {new: true})
+			  .then(dbUser => {
+				  console.log(dbUser)
+			  })
+		  })
 	      .catch(err => res.status(422).json(err));
 	  }
 

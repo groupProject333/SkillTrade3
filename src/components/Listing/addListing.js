@@ -3,15 +3,18 @@ import { Input, TextArea, FormBtn } from '../Form';
 import {Container, Form} from 'reactstrap'
 import API from '../utils/API';
 import './style.css'
-
+import './../../App.js'
 class Listing extends Component {
-	state = {
+	constructor(props) {
+		super(props);
+		this.state = {
 		title: '',
 		description: '',
 		duration: '',
 		datesAvailable: '',
 		tags: ''
-};
+		};
+	}
 
 handleInputChange = event => {
     const { name, value } = event.target;
@@ -19,10 +22,20 @@ handleInputChange = event => {
 		[name]: value
     });
 };
-
+// splitString(tempestString);
+// console.log(tempestString)
+splitString = (stringToSplit) => {
+    for(var i = 0; i < stringToSplit.length; i++) {
+ 
+        stringToSplit = stringToSplit.replace(" ", ",");
+        
+       }
+       var arrayOfStrings = stringToSplit.split(",");
+       return arrayOfStrings
+}
 	handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log('hit');
+    console.log(this.props.username + "LINE 25");
     console.log("state in handle submit", this.state.title)
 		if (
 			this.state.title &&
@@ -31,14 +44,16 @@ handleInputChange = event => {
 			this.state.datesAvailable &&
 			this.state.tags 
 		) {
+			var tags = this.splitString(this.state.tags)
 			API.saveListing({ 
 				title: this.state.title,
 				description: this.state.description,
 				duration: this.state.duration,
 				datesAvailable: this.state.datesAvailable,
-				tags: this.state.tags
+				hashtags: tags,
+				owner: this.props.username
 			}) 
-				.then(res => console.log('success'))
+				.then(res => console.log(res))
 				.catch((err) => console.log("err from saveListing", err));
 		}
 	};
