@@ -16,6 +16,7 @@ import Profile from './components/Profile/profile';
 // import Ranking from './components/pages/topusers';
 import Messaging from './components/Message/messaging';
 import addListing from './components/Listing/addListing';
+import singleListing from './components/singleListing/singleListing.js';
 //import Router from ReactRouter.Route;
 //import Switch from ReactRouter.Switch;
 // import Wrapper from './components/Wrapper';
@@ -113,6 +114,7 @@ class App extends Component {
 						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
 					)}
 				</section>
+				<Route exact path="/listing/:id" component={singleListing} />
 				{/* </Wrapper> */}
 				<Footer/>
 			</section>

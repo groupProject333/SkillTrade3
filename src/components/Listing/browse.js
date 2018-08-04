@@ -1,15 +1,15 @@
-
-import React, { Component } from "react";
-import PageSelect from '../PageSelect';
-// import React, { Component } from 'react';
-// import PageSelect from '../Header/PageSelect';
+import React, { Component } from 'react';
+//import PageSelect from '../Header/PageSelect';
 import { Link } from 'react-router-dom';
 import '../../App.js';
+import '../../App.css';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 //import Input from '../Form/Input';
-import { List, ListItem } from '../List';
+import { List } from '../List';
 import { Col, Row, Container } from '../Grid';
 import API from '../utils/API';
-import './style.css'
+import './style.css';
+//import singleListing from '../singleListing'
 
 class Browse extends Component {
 	state = {
@@ -40,42 +40,44 @@ class Browse extends Component {
 			.catch((err) => console.log(err));
 	};
 
-	checkListing = (id) => {
-		API.checkListing(id)
-			.then((res) => console.log('success'))
-			.catch((err) => console.log('err from checkListing', err));
-	};
+	// checkListing = () => {
+	// 	API.checkListing()
+	// 		.then((res) =>
+	// 			this.setState({
+
+	// 				title: '',
+	// 				description: '',
+	// 				duration: '',
+	// 				datesAvailable: '',
+	// 				tags: ''
+	// 			})
+
+	// 		)
+	// 		.catch((err) => console.log(err));
+	// };
 
 	handleInputChange = (event) => {
 		const { name, value } = event.target;
 		this.setState({
-			[name]: value
+			[name]: value 
 		});
 	};
 
 	render() {
 		return (
-				<Container is="autoM">
-				<PageSelect />
+			<div>
+				<Container>
 					<Row>
 						<Col size="md-6 sm-12">
 							{this.state.listings.length ? (
 								<List>
 									{this.state.listings.map((listing) => (
-										<ListItem key={listing._id}>
+										<ListGroup key={listing._id}>
 											<Link to={'/listing/' + listing._id}>
-												<strong>
-													<ul>
-														<li> {listing.title} </li>
-														<li> {listing.description} </li>
-														<li> {listing.duration} </li>
-														<li> {listing.datesAvailable} </li>
-														<li> {listing.tags} </li>
-													</ul>
-												</strong>
+												<ListGroupItem className="listTitle"> {listing.title} </ListGroupItem>
+												
 											</Link>
-											<button className='checklistBtn' onClick={() => this.checkListing(listing._id)} >check</button>
-										</ListItem>
+										</ListGroup>
 									))}
 								</List>
 							) : (
@@ -84,6 +86,7 @@ class Browse extends Component {
 						</Col>
 					</Row>
 				</Container>
+			</div>
 		);
 	}
 }
