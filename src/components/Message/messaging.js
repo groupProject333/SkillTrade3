@@ -21,6 +21,7 @@ class Messaging extends Component {
       messageBody: [],
       receiver: "",
       body: "",
+      bodyReply: "",
       chipsToSend: "0",
       chips: "0"
     };
@@ -83,7 +84,7 @@ class Messaging extends Component {
   removeMessage = id => {
     console.log(id + "LINE 84!!!!!!!!!!!!!!!!!!!!!!!!1");
     // document.getElementById(id).remove();
-    ReactDOM.unmountComponentAtNode(id)
+    ReactDOM.unmountComponentAtNode(id);
   };
   deleteFromProps = id => {
     console.log(this.state.messageProps[0].data);
@@ -124,45 +125,46 @@ class Messaging extends Component {
     // this.state.messageProps.splice(_.indexOf(this.state.messageProps, _.findWhere(this.state.messageProps, { id : id})), 1);
   };
   updateChips = () => {
-    console.log("HERE UPDATE CHIPS")
-    var chips = parseInt(this.state.chipsToSend)
+    console.log("HERE UPDATE CHIPS");
+    var chips = parseInt(this.state.chipsToSend);
     var info = {
       username: this.props.username,
-      chips: -(chips)
-    }
-    API.updateChips(info)
-    .then(res => {
-      console.log("128")
-      console.log(res)
+      chips: -chips
+    };
+    API.updateChips(info).then(res => {
+      console.log("128");
+      console.log(res);
       this.setState({
         chipsToSend: "0",
         body: "",
-        receiver: "",
-      })
-      console.log("142")
-      this.getUser(this.props.username)
-    })
-  }
+        receiver: ""
+      });
+      console.log("142");
+      this.getUser(this.props.username);
+    });
+  };
   handleFormSubmit = event => {
     event.preventDefault();
-    var info = []
+    console.log(this.state.receiver + " " + this.state.body)
+    var info = [];
     console.log(this.props.username + "LINE 109!!!!!!!!!!!!!!!!!!");
     if (this.state.receiver && this.state.body) {
-      if ((this.state.receiver === this.props.username) && (this.state.chipsToSend !== "0")) {
-        alert("You can't send chips to yourself")
-      }
-      else {
-      API.sendMessage({
-        receiver: this.state.receiver,
-        body: this.state.body,
-        sender: this.props.username,
-        chips: parseInt(this.state.chipsToSend)
-      })
-      .then(this.updateChips())
-      .catch(err => console.log(err));
+      if (
+        this.state.receiver === this.props.username &&
+        this.state.chipsToSend !== "0"
+      ) {
+        alert("You can't send chips to yourself");
+      } else {
+        API.sendMessage({
+          receiver: this.state.receiver,
+          body: this.state.body,
+          sender: this.props.username,
+          chips: parseInt(this.state.chipsToSend)
+        })
+          .then(this.updateChips())
+          .catch(err => console.log(err));
       }
     }
-
   };
   sayHi = event => {
     event.preventDefault();
@@ -173,15 +175,14 @@ class Messaging extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state.body)
-    console.log(this.state.receiver)
-
+    console.log(this.state.body);
+    console.log(this.state.receiver);
   };
   provideMessagesB = () => {
+    document.getElementById("messageDiv").innerHTML = "";
     if (this.state.messageProps.length === 0) {
       this.setState({ popoverOpen: true });
       document.getElementById("messageDiv").innerHTML = "";
-      
     } else {
       console.log(this.state.messageProps);
       let data = this.state.messageProps;
@@ -208,6 +209,7 @@ class Messaging extends Component {
               block
               id="toggler"
               style={{ marginBottom: "1rem", margin: "auto" }}
+              onClick={this.setState({ receiver: d.data[0].sender })}
             >
               Reply
             </Button>
@@ -222,17 +224,16 @@ class Messaging extends Component {
                         name="body"
                         id="exampleText"
                         onChange={this.handleInputChange}
-                        value={this.state.body}
-                        onClick={this.setState({ receiver: d.data[0].sender })}
+                        // value={this.state.bodyReply}
                         bsSize="lg"
                       />
-                      <Button
-                        // disabled={!(this.state.body)}
-                        style={{ margin: "auto" }}
-                        onClick={this.handleFormSubmit}
-                      >
-                        Send Message
-                      </Button>
+                    <Button
+                      // disabled={!(this.state.body)}
+                      style={{ margin: "auto" }}
+                      onClick={this.handleFormSubmit}
+                    >
+                      Send Message
+                    </Button>
                     </FormGroup>
                   </Form>
                 </CardBody>
@@ -259,19 +260,23 @@ class Messaging extends Component {
 
   checkChips = event => {
     event.preventDefault();
-    if (this.state.chipsToSend > 0 && this.state.receiver === this.props.username) {
+    if (
+      this.state.chipsToSend > 0 &&
+      this.state.receiver === this.props.username
+    ) {
       console.log("cant send chips to yourself");
-      document.getElementById("chipChecker").textContent = "You Can't Send Chips To Yourself";
+      document.getElementById("chipChecker").textContent =
+        "You Can't Send Chips To Yourself";
       this.setState({ collapse: true });
-    }
-    else if (this.state.chipsToSend > this.state.chips) {
+    } else if (this.state.chipsToSend > this.state.chips) {
       console.log("not enough chips");
-      document.getElementById("chipChecker").textContent = "You Don't Have Enough Chips";
+      document.getElementById("chipChecker").textContent =
+        "You Don't Have Enough Chips";
       this.setState({ collapse: true });
-
-    } else if(this.state.chipsToSend < 0) {
+    } else if (this.state.chipsToSend < 0) {
       console.log("cant send negative chips");
-      document.getElementById("chipChecker").textContent = "Can't Send Negative Chips";
+      document.getElementById("chipChecker").textContent =
+        "Can't Send Negative Chips";
       this.setState({ collapse: true });
     } else {
       console.log("you have enough chips");
@@ -288,19 +293,19 @@ class Messaging extends Component {
     document.getElementById("resetButton").style.display = "none";
     this.setState({
       chipsToSend: ""
-    })
+    });
   };
   getValue = () => {
     var value = this.refs.form.getValue();
     if (value) {
       console.log(value);
-      this.setState({value: null}); // <-- reset value
+      this.setState({ value: null }); // <-- reset value
     }
-  }
+  };
   showMessageList = event => {
     event.preventDefault();
-    this.getUser(this.props.id)
-  }
+    this.getUser(this.props.id);
+  };
   render() {
     return (
       <div>
@@ -323,12 +328,12 @@ class Messaging extends Component {
             <h3>Send Message</h3>
             <Form ref="form">
               <FormGroup>
-                <Label for="exampleText">Message</Label>
+                <Label for="exampleText1">Message</Label>
                 <Input
                   type="textarea"
                   name="body"
                   ref="body"
-                  id="exampleText"
+                  id="exampleText1"
                   onChange={this.handleInputChange}
                   value={this.state.body}
                   bsSize="lg"
@@ -359,8 +364,8 @@ class Messaging extends Component {
                     <Card>
                       <CardBody>
                         How many chips would you like to send?
-                        <br/>
-                         You currently have {this.state.chips}.
+                        <br />
+                        You currently have {this.state.chips}.
                         <FormGroup>
                           <Label for="chipsToSend" />
                           <Input
@@ -376,16 +381,20 @@ class Messaging extends Component {
                         <div>
                           <Collapse isOpen={this.state.collapse}>
                             <Card>
-                              <CardBody id="chipChecker"></CardBody>
+                              <CardBody id="chipChecker" />
                             </Card>
                           </Collapse>
                         </div>
                         <div id="resetDiv">
-                        <Button id="chipAdder" onClick={this.checkChips}>
-                          Add Chips To Message
-                        </Button>
-                        
-                          <Button style={{ display: "none" }} id="resetButton" onClick={this.resetChipSend}>
+                          <Button id="chipAdder" onClick={this.checkChips}>
+                            Add Chips To Message
+                          </Button>
+
+                          <Button
+                            style={{ display: "none" }}
+                            id="resetButton"
+                            onClick={this.resetChipSend}
+                          >
                             Reset
                           </Button>
                         </div>
@@ -396,7 +405,7 @@ class Messaging extends Component {
               </div>
               <Button
                 disabled={!(this.state.receiver && this.state.body)}
-                onClick={this.handleFormSubmit} 
+                onClick={this.handleFormSubmit}
                 color="primary"
                 size="lg"
                 block
@@ -433,11 +442,12 @@ class Messaging extends Component {
 //                 }) */}
                 {/* }}>View Messages</button> */}
 
-                <div id="messageDiv" />
+                
               </MessageList>
             </Form>
           </CardBody>
         </Card>
+        <div id="messageDiv" />
         {/* {this.state.messageBody.map(message => {
                 })
             }}>View Messages</button>

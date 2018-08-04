@@ -13,3 +13,8 @@
 #prof{
     margin-bottom: 5vh;
 }
+.reviewClass {
+    border: 1px solid black;
+    margin: 8px;
+    font-size: 20px;
+}

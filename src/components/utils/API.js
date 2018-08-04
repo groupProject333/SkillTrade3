@@ -48,6 +48,9 @@ export default {
 			}
 		});
 	},
+	findByTags: function(searchTags) {
+		return axios.put("/listing/search", searchTags);
+	},	
 	saveProfile: function(profileData) {
 		return axios.put('/api/profiles/' + profileData._id, profileData);
 	},

@@ -106,6 +106,7 @@ class App extends Component {
           path="/userprofile/:username"
           render={props => (
             <UserProfiles username={props.match.params.username} />
+            // <UserProfiles component={UserProfiles} />
           )}
         />
         {/* {this.state.loggedIn && <Route path="/topusers" component={Ranking} />} */}
@@ -117,6 +118,14 @@ class App extends Component {
             path="/addListing"
             render={() => (
               <Listing username={this.state.username} id={this.state.id} />
+            )}
+          />
+        )}
+        {this.state.loggedIn && (
+          <Route
+            path="/browse"
+            render={() => (
+              <Browse username={this.state.username}/>
             )}
           />
         )}

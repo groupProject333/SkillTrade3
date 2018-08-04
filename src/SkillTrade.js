@@ -113,23 +113,33 @@ class App extends Component {
               <UserProfiles username={props.match.params.username} />
             )}
           />
-          {/* <Route
-						path="/userprofile"
-						component={browseProfiles}
-					/> */}
 
-					{/* {this.state.loggedIn && <Route path="/topusers" component={Ranking} />} */}
-					{this.state.loggedIn && <Route path="/addListing" component={addListing} />}
-					{this.state.loggedIn && (
-						<Route path="/messaging" render={() => <Messaging username={this.state.username} />} />
-					)}
-				</section>
-				<Route exact path="/listing/:id" component={singleListing} />
-				{/* </Wrapper> */}
-				<Footer/>
-			</section>
-		);
-	}
+          {this.state.loggedIn && (
+            <Route
+              path="/addListing"
+              render={() => (
+                <Listing username={this.state.username} id={this.state.id} />
+              )}
+            />
+          )}{" "}
+          {this.state.loggedIn && (
+            <Route
+              path="/messaging"
+              render={() => <Messaging username={this.state.username} />}
+            />
+          )}
+          {this.state.loggedIn && (
+            <Route
+              path="/browse"
+              render={() => <Browse username={this.state.username} />}
+            />
+          )}
+        </section>
+        {/* </Wrapper> */}
+        <Footer />
+      </section>
+    );
+  }
 
 }
 
