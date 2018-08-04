@@ -73,7 +73,7 @@ class Profile extends Component {
         total = total + num;
         console.log(total);
       }
-      if (i == this.state.reviewPoints.length - 1) {
+      if (i === this.state.reviewPoints.length - 1) {
         var average = total / this.state.reviewPoints.length - 1;
         this.setState({
           average: average
@@ -87,8 +87,8 @@ class Profile extends Component {
     console.log(reviewData);
     var reviewItem = (
       <div className="reviewClass" id={reviewData._id} key={reviewData._id}>
-        <p>From:{reviewData.reviewer}</p>
-        <p>Rating:{reviewData.rating}</p>
+        <p>From: {reviewData.reviewer}</p>
+        <p>Rating: {reviewData.rating}⭐</p>
         <p>Message:{reviewData.message}</p>
       </div>
       
@@ -104,11 +104,12 @@ class Profile extends Component {
       var reviewItems = res.data.map(review => (
         // console.log(review)
         <div className="reviewClass" id={review._id} key={review._id}>
-          <p>From:{review.reviewer}</p>
-          <p>Rating:{review.rating}</p>
-          <p>Message:{review.message}</p>
+          <p>From: {review.reviewer}</p>
+          <p>Rating: {review.rating}⭐</p>
+          <p>Message: <br/>{review.message}</p>
           {this.state.reviewPoints.push(review.rating)}
         </div>
+        
       ));
 
       this.getReviewAverage();
@@ -234,7 +235,7 @@ class Profile extends Component {
           <Card body color="info" id="prof">
             <CardHeader>
               {/* <h1>_id: {this.props.id}</h1> */}
-              <h1>Rating : {this.state.average}</h1>
+              <h1>Rating : {this.state.average}⭐</h1>
               {/* <UserProfile karmaChips={this.state.karmaChips} imageLink={this.state.imageLink} firstName={this.state.firstName} lastName={this.state.lastName} skills={this.state.skills} location={this.state.location} dateJoined={this.state.dateJoined} />
                 <form>
                     <div className= "form-group">

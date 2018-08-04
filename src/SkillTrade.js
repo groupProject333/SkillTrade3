@@ -129,6 +129,12 @@ class App extends Component {
               render={() => <Messaging username={this.state.username} />}
             />
           )}
+          {this.state.loggedIn && (
+            <Route
+              path="/browse"
+              render={() => <Browse username={this.state.username} />}
+            />
+          )}
         </section>
         {/* </Wrapper> */}
         <Footer />

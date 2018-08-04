@@ -145,6 +145,7 @@ class Messaging extends Component {
   };
   handleFormSubmit = event => {
     event.preventDefault();
+    console.log(this.state.receiver + " " + this.state.body)
     var info = [];
     console.log(this.props.username + "LINE 109!!!!!!!!!!!!!!!!!!");
     if (this.state.receiver && this.state.body) {
@@ -178,6 +179,7 @@ class Messaging extends Component {
     console.log(this.state.receiver);
   };
   provideMessagesB = () => {
+    document.getElementById("messageDiv").innerHTML = "";
     if (this.state.messageProps.length === 0) {
       this.setState({ popoverOpen: true });
       document.getElementById("messageDiv").innerHTML = "";
@@ -207,6 +209,7 @@ class Messaging extends Component {
               block
               id="toggler"
               style={{ marginBottom: "1rem", margin: "auto" }}
+              onClick={this.setState({ receiver: d.data[0].sender })}
             >
               Reply
             </Button>
@@ -218,11 +221,10 @@ class Messaging extends Component {
                       <Label for="exampleText">Reply</Label>
                       <Input
                         type="textarea"
-                        name="bodyReply"
+                        name="body"
                         id="exampleText"
                         onChange={this.handleInputChange}
-                        value={this.state.bodyReply}
-                        onClick={this.setState({ receiver: d.data[0].sender })}
+                        // value={this.state.bodyReply}
                         bsSize="lg"
                       />
                     <Button
