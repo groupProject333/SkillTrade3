@@ -225,7 +225,6 @@ class Messaging extends Component {
                         onClick={this.setState({ receiver: d.data[0].sender })}
                         bsSize="lg"
                       />
-                    </FormGroup>
                     <Button
                       // disabled={!(this.state.body)}
                       style={{ margin: "auto" }}
@@ -233,6 +232,7 @@ class Messaging extends Component {
                     >
                       Send Message
                     </Button>
+                    </FormGroup>
                   </Form>
                 </CardBody>
               </Card>
