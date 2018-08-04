@@ -7,6 +7,4 @@ router.get('/', listController.findAll)
 router.put('/search/', listController.findByTags)
 router.get('/:id', listController.findOne)
 
-
-
 module.exports = router;

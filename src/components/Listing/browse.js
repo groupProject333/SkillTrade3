@@ -21,6 +21,7 @@ import { Col, Row, Container } from "../Grid";
 import API from "../utils/API";
 import "./style.css";
 import UserProfiles from "../pages/userprofiles";
+
 class Browse extends Component {
 	constructor(props) {
 		super(props);

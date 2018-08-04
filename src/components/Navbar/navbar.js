@@ -80,16 +80,16 @@ class Navbar2 extends Component {
               <Nav className="ml-auto" navbar>
                 {loggedIn ? (
                   <section className="float-left">
-                    <NavItem>
+                    <NavItem className='logoutBtn'>
                       <Link to="#" id="navText" onClick={this.logout}>
-                        <span className="text-success">Logout</span>
+                        <span className="text-success logoutBtn">Logout</span>
                       </Link>
                     </NavItem>
                   </section>
                 ) : (
                   <section>
                     <section className="float-left">
-                      <NavItem>
+                      <NavItem className='loginBtn'>
                         <Link to="/login">
                           <span id="navText" className="text-success">
                             Login
@@ -98,10 +98,10 @@ class Navbar2 extends Component {
                       </NavItem>
                     </section>
                     <section className="float-right">
-                      <NavItem>
+                      <NavItem className='signupBtn'>
                         <Link to="/signup">
                           <span id="navText" className="text-success">
-                            Sign Up
+                            Sign-Up
                           </span>
                         </Link>
                       </NavItem>
@@ -146,7 +146,7 @@ class Navbar2 extends Component {
                       <NavItem>
                         <Link to="/addListing">
                           <span id="navText" className="text-success">
-                            Add a New Listing
+                           New Listing
                           </span>
                         </Link>
                       </NavItem>

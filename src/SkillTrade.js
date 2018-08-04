@@ -14,8 +14,11 @@ import browseProfiles from "./components/pages/browseprofiles";
 import Browse from "./components/Listing/browse";
 import Profile from "./components/Profile/profile";
 // import Ranking from './components/pages/topusers';
-import Messaging from "./components/Message/messaging";
-import Listing from "./components/Listing/addListing";
+
+import Messaging from './components/Message/messaging';
+import addListing from './components/Listing/addListing';
+import singleListing from './components/singleListing/singleListing.js';
+
 //import Router from ReactRouter.Route;
 //import Switch from ReactRouter.Switch;
 // import Wrapper from './components/Wrapper';
@@ -110,11 +113,7 @@ class App extends Component {
               <UserProfiles username={props.match.params.username} />
             )}
           />
-          {/* <Route
-						path="/userprofile"
-						component={browseProfiles}
-					/> */}
-          {/* {this.state.loggedIn && <Route path="/topusers" component={Ranking} />} */}
+
           {this.state.loggedIn && (
             <Route
               path="/addListing"
@@ -141,6 +140,7 @@ class App extends Component {
       </section>
     );
   }
+
 }
 
 export default App;
