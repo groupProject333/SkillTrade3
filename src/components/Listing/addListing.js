@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Input, TextArea, FormBtn } from '../Form';
-import {Container, Form} from 'reactstrap'
 import API from '../utils/API';
-import './style.css'
-import './../../App.js'
+
+
+
 class Listing extends Component {
 	constructor(props) {
 		super(props);
@@ -60,8 +60,8 @@ splitString = (stringToSplit) => {
 
 	render() {
 		return (
-			<Container id="autoM">
-				<Form className="list-container">
+			<div>
+				<form className="list-container">
 					<Input
 						className="listing-text"
 					//	value={this.state.title}
@@ -111,8 +111,8 @@ splitString = (stringToSplit) => {
 					>
 						Submit Listing
 					</FormBtn>
-				</Form>
-			</Container>
+				</form>
+			</div>
 		);
 	}
 }
