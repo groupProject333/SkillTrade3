@@ -25,6 +25,10 @@ var ListingSchema = new Schema({
   hashtags: {
     type: Array,
     required: true
+  },
+  owner: {
+    type: String,
+    required: true
   }
 });
 

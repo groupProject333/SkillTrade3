@@ -14,7 +14,10 @@ const userSchema = new Schema({
 		type: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
 	},
 	profile: {
-		type: [{type: Schema.Types.ObjectId, ref: "Reviews"}]
+		type: [{type: Schema.Types.ObjectId, ref: "Profile"}]
+	},
+	listing: {
+		type: [{type: Schema.Types.ObjectId, ref: "Listings"}]
 	},
 	chips: {type: Number, default: 10}
 })
