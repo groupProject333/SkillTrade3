@@ -204,7 +204,7 @@ class Messaging extends Component {
           </DeleteButton>
           <div>
             <Button
-              color="primary"
+              color="success"
               bsSize="lg"
               block
               id="toggler"
@@ -214,7 +214,7 @@ class Messaging extends Component {
               Reply
             </Button>
             <UncontrolledCollapse toggler="#toggler">
-              <Card body outline color="warning">
+              <Card color = "danger">
                 <CardBody>
                   <Form>
                     <FormGroup>
@@ -320,13 +320,25 @@ class Messaging extends Component {
             <PopoverBody>୧( ಠ Д ಠ )୨</PopoverBody>
           </Popover>
         </div>
-        <Card id="mess" className="text-center" body outline color="danger">
+        <Card id="mess" className="text-center">
           <CardBody>
             <h1>Hi, {this.props.username}!</h1>
             <h2>KarmaChips: {this.state.chips}</h2>
             {/* <h2>You have {this.state.messageBody.length} messages</h2> */}
             <h3>Send Message</h3>
             <Form ref="form">
+            <FormGroup>
+                <Label for="exampleEmail">User</Label>
+                <Input
+                  type="textarea"
+                  name="receiver"
+                  id="exampleEmail"
+                  ref="user"
+                  onChange={this.handleInputChange}
+                  value={this.state.receiver}
+                  bsSize="lg"
+                />
+              </FormGroup>
               <FormGroup>
                 <Label for="exampleText1">Message</Label>
                 <Input
@@ -336,18 +348,6 @@ class Messaging extends Component {
                   id="exampleText1"
                   onChange={this.handleInputChange}
                   value={this.state.body}
-                  bsSize="lg"
-                />
-              </FormGroup>
-              <FormGroup>
-                <Label for="exampleEmail">User</Label>
-                <Input
-                  type="textarea"
-                  name="receiver"
-                  id="exampleEmail"
-                  ref="user"
-                  onChange={this.handleInputChange}
-                  value={this.state.receiver}
                   bsSize="lg"
                 />
               </FormGroup>
@@ -406,18 +406,19 @@ class Messaging extends Component {
               <Button
                 disabled={!(this.state.receiver && this.state.body)}
                 onClick={this.handleFormSubmit}
-                color="primary"
+                color="success"
                 size="lg"
                 block
                 style={{ margin: "auto" }}
               >
                 Send Message
               </Button>
-              <h1 className="display-1">Inbox</h1>
-
+              <h1>
+                Inbox
+              </h1>
               <Button
                 onClick={this.provideMessagesB}
-                color="primary"
+                color="success"
                 id="Popover1"
                 size="lg"
                 block

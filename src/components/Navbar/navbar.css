@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Righteous');
 
+#navMargin{
+    margin-bottom: 5vh;
+}
 
 #navText {
     font-family: 'Righteous', cursive;
