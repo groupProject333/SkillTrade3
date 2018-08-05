@@ -72,17 +72,21 @@ class Navbar2 extends Component {
     console.log(this.props);
 
     return (
-      <section>
+      <section id="navMargin">
             <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">Skill Trade</NavbarBrand>
+            <NavbarBrand>
+              Skill Trade
+              </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 {loggedIn ? (
                   <section className="float-left">
                     <NavItem className='logoutBtn'>
-                      <Link to="#" id="navText" onClick={this.logout}>
-                        <span className="text-success logoutBtn">Logout</span>
+                      <Link to="/" id="navText" onClick={this.logout}>
+                        <span className="text-success logoutBtn">
+                        Logout
+                        </span>
                       </Link>
                     </NavItem>
                   </section>
@@ -146,7 +150,7 @@ class Navbar2 extends Component {
                       <NavItem>
                         <Link to="/addListing">
                           <span id="navText" className="text-success">
-                           New Listing
+                          New Listing
                           </span>
                         </Link>
                       </NavItem>

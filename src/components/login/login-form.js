@@ -86,7 +86,7 @@ class LoginForm extends Component {
 		} else {
 		return (
 			<Container id="login">
-				<Card>
+				<Card className="text-center">
 					<CardHeader>
 						<h4>Login</h4>
 					</CardHeader>
@@ -101,6 +101,7 @@ class LoginForm extends Component {
 									placeholder="Username"
 									value={this.state.username}
 									onChange={this.handleChange}
+									className="text-center"
 								/>
 							</FormGroup>
 							<FormGroup>
@@ -111,6 +112,7 @@ class LoginForm extends Component {
 									name="password"
 									value={this.state.password}
 									onChange={this.handleChange}
+									className="text-center"
 								/>
 							</FormGroup>
 							<FormGroup>

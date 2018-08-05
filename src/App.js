@@ -117,7 +117,7 @@ class App extends Component {
           <Route
             path="/addListing"
             render={() => (
-              <Listing username={this.state.username} id={this.state.id} />
+              <addListing username={this.state.username} id={this.state.id} />
             )}
           />
         )}

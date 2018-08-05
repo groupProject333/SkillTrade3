@@ -10,14 +10,14 @@ import Navbar2 from "./components/Navbar";
 import Home from "./components/Home/home";
 
 import UserProfiles from "./components/pages/userprofiles";
-import browseProfiles from "./components/pages/browseprofiles";
 import Browse from "./components/Listing/browse";
 import Profile from "./components/Profile/profile";
 // import Ranking from './components/pages/topusers';
+import addListing from './components/Listing/addListing'
+import {Container, Card, CardBody} from 'reactstrap'
 
 import Messaging from './components/Message/messaging';
-import addListing from './components/Listing/addListing';
-import singleListing from './components/singleListing/singleListing.js';
+// import singleListing from './components/singleListing/singleListing.js';
 
 //import Router from ReactRouter.Route;
 //import Switch from ReactRouter.Switch;
@@ -82,7 +82,13 @@ class App extends Component {
           />
           {/* greet user if logged in: */}
           {this.state.loggedIn && (
-            <p>WELCOME, {this.state.username.toUpperCase()} TO THE HOMEPAGE </p>
+            <Container id = "welcome">
+            <Card>
+            <h1 id="welcomeText">
+              WELCOME, {this.state.username.toUpperCase()} TO SKILLTRADE!
+            </h1>
+            </Card>
+            </Container>
           )}
           {/* Routes to different components */}
           {!this.state.loggedIn && <Route exact path="/" component={Home} />}
@@ -118,7 +124,7 @@ class App extends Component {
             <Route
               path="/addListing"
               render={() => (
-                <Listing username={this.state.username} id={this.state.id} />
+                <addListing username={this.state.username} id={this.state.id} />
               )}
             />
           )}{" "}
@@ -135,7 +141,6 @@ class App extends Component {
             />
           )}
         </section>
-        {/* </Wrapper> */}
         <Footer />
       </section>
     );

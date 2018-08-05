@@ -1,36 +1,32 @@
 import React from 'react';
-import { Jumbotron, Button, Container, Row, Col } from 'reactstrap';
+import { Card, CardHeader, CardBody, Button, Container, Row, Col } from 'reactstrap';
 import "./jumbo.css";
 
 const Jumbo = (props) => {
     return (
         <section id="back">
-            <Jumbotron id="jumboText">
             <Container>
-                <Row>
-                    <Col>
-                <h1 className="display-2 text-center text-primary">
+                <Card>
+                    <CardHeader>
+                <h1 className="text-center text-info">
                     Welcome to Skill-Trade!
                 </h1>
-                </Col>
-                <Col>
-                <h2 className="text-center">
+                </CardHeader>
+                <CardBody>
+                <h2 className="text-center text-info">
                 What do you want to do today?
                 </h2>
-                </Col>
-                <Col>
-                <div className="text-center" id="contButton">
-                    <Button color="primary" size="lg" block id="btn">
+                <div className="text-center">
+                    <Button border color="info" size="lg" block id="btn">
                     Browse the Current Listings
                     </Button>
-                    <Button color="primary" size="lg" block id="btn">
+                    <Button border color="info" size="lg" block id="btn">
                     Create a New Listing
                     </Button>
                 </div>
-                </Col>
-                </Row>
-                </Container>
-            </Jumbotron>
+                </CardBody>
+                </Card>
+            </Container>
         </section>
     );
 };

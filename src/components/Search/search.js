@@ -7,7 +7,7 @@ const Search = (props) => {
         <Container id="search">
             <Card id="contain">
             <CardHeader>
-                    <h2 className="text-center text-primary">
+                    <h2 className="text-center text-success">
                         Welcome to Skill-Trade!
                     </h2>
                     </CardHeader>
@@ -17,7 +17,7 @@ const Search = (props) => {
                             {/* <Label for="search" id="label">Search</Label> */}
                             <Input type="text" name="search" id="field" placeholder="Search Listings" large className = "text-center"/>
                         </FormGroup>
-                        <Button id="btn">Submit</Button>
+                        <Button id="btn2">Submit</Button>
                         </Form>
                         </CardBody>
                 </Card>

@@ -232,10 +232,10 @@ class Profile extends Component {
     return (
       <section>
         <Container>
-          <Card body color="info" id="prof">
+          <Card color="info" id="prof">
             <CardHeader>
               {/* <h1>_id: {this.props.id}</h1> */}
-              <h1>Rating : {this.state.average}⭐</h1>
+              <h1> Update Your Profile Below:</h1>
               {/* <UserProfile karmaChips={this.state.karmaChips} imageLink={this.state.imageLink} firstName={this.state.firstName} lastName={this.state.lastName} skills={this.state.skills} location={this.state.location} dateJoined={this.state.dateJoined} />
                 <form>
                     <div className= "form-group">
@@ -350,8 +350,13 @@ class Profile extends Component {
                 </FormGroup>
                 <button onClick={this.handleFormSubmit}>Update Profile</button>
               </Form>
-              <FormGroup>
+              </CardBody>
+              </Card>
+              
                 <Card>
+                  <CardHeader>
+                  <h1>Rating : {this.state.average}⭐</h1>
+                    </CardHeader>
                   <CardBody>
                     <Form>
                       <FormGroup>
@@ -412,15 +417,12 @@ class Profile extends Component {
                     </Link>
                     {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
                     {/* {console.log("/messaging/" + this.props.username)} */}
-                    <Link to={`/messaging/${this.props.username}`}>
+                    {/* <Link to={`/messaging/${this.props.username}`}>
                       Messaging
-                    </Link>
+                    </Link> */}
                     {/* </Form> */}
                   </CardBody>
-                </Card>
-              </FormGroup>
-            </CardBody>
-          </Card>
+              </Card>
         </Container>
       </section>
     );
