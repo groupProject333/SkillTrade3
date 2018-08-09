@@ -2,8 +2,7 @@ import React from 'react';
 //import PropTypes from 'prop-types';
 import "../../App.css";
 import { Pagination, PaginationItem, PaginationLink, Container } from 'reactstrap';
-
-
+import './style.css'
 
 
 class PageSelect extends React.Component {
@@ -28,7 +27,7 @@ class PageSelect extends React.Component {
 		var pages = [ 'Page 1', 'Page 2', 'Page 3', 'Page4' ];
 		return (
 			<Container id="containPages">
-				<Pagination className="pages">
+				<Pagination id="paged" className="pages">
 					<PaginationItem>
 						<PaginationLink previous href="#" />
 					</PaginationItem>

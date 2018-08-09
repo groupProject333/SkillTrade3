@@ -142,14 +142,17 @@ class Browse extends Component {
       console.log(res);
       this.setState({ profileToView: res.data });
       console.log(this.state.profileToView);
-
+      console.log(this.state.profileToView.review.length)
+      if(this.state.profileToView.review.length > 0) {
       API.getReviewBody(this.state.profileToView._id).then(res => {
         console.log(res);
         this.setState({ reviews: res.data });
         console.log(this.state.reviews);
         this.renderReviews();
       });
+    }
     });
+
   
   };
   handleFormSubmit = event => {
@@ -277,14 +280,16 @@ class Browse extends Component {
         <Container is="autoM">
           <Form>
             <FormGroup>
-              <Label>Search</Label>
+              <Label id="search">Search Listings</Label>
+              < br/>
               <input
+                id="searchBar"
                 name="searchQuery"
                 onChange={this.handleInputChange}
                 placeholder="guitar"
               />
             </FormGroup>{" "}
-            <button onClick={this.handleSearch}>Submit</button>
+            <button onClick={this.handleSearch}>Search</button>
           </Form>
           <PageSelect />
           <div id="noResults"> </div>

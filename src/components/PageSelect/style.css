@@ -1,4 +1,10 @@
 #containPages{
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
+    /* background-color: green */
+
+}
+.pages {
+    margin: 0 auto;
+    /* background-color: green */
 }

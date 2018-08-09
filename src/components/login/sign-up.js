@@ -58,10 +58,10 @@ render() {
 		<CardBody>
 			<Form className="form-horizontal">
 				<FormGroup>
-					<div className="col-1 col-ml-auto">
+					<div className="col-1 col-ml-auto" id="usernameDiv">
 						<label className="form-label" htmlFor="username">Username</label>
 					</div>
-					<div className="col-3 col-mr-auto">
+					<div className="col-3 col-mr-auto" id="usernameDiv">
 						<input className="form-input"
 							type="text"
 							id="username"
@@ -73,12 +73,14 @@ render() {
 					</div>
 				</FormGroup>
 				<FormGroup>
-					<div className="col-1 col-ml-auto">
+					<div className="col-1 col-ml-auto" id="signUpDiv">
 						<label className="form-label" htmlFor="password">Password: </label>
 					</div>
-					<div className="col-3 col-mr-auto">
+					<div className="col-3 col-mr-auto"  id="signUpDiv">
 						<input className="form-input"
 							placeholder="password"
+							id="password"
+
 							type="password"
 							name="password"
 							value={this.state.password}
