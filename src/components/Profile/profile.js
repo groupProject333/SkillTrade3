@@ -9,7 +9,16 @@ import ReactDOM from "react-dom";
 // import { Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import "./profile.css";
 import { Card, Container, CardHeader, CardBody } from "reactstrap";
-import { Form, Popover, PopoverHeader, PopoverBody, FormGroup, Label, Button, Input } from "reactstrap";
+import {
+  Form,
+  Popover,
+  PopoverHeader,
+  PopoverBody,
+  FormGroup,
+  Label,
+  Button,
+  Input
+} from "reactstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Wrapper from '../Wrapper';
@@ -23,6 +32,7 @@ class Profile extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       popoverOpen: false,
+      usr: this.props.username,
       id: this.props.id,
       profile: [],
       _id: "",
@@ -72,14 +82,15 @@ class Profile extends Component {
       if (num !== null) {
         total = total + num;
         console.log(total);
-      }
-      if (i === this.state.reviewPoints.length - 1) {
-        var average = total / this.state.reviewPoints.length - 1;
-        this.setState({
-          average: average
-        });
-        console.log(this.state.average);
-        // this.toggle();
+
+        if (i === this.state.reviewPoints.length - 1) {
+          var average = total / this.state.reviewPoints.length;
+          this.setState({
+            average: average
+          });
+          console.log(this.state.average);
+          // this.toggle();
+        }
       }
     }
   };
@@ -89,11 +100,13 @@ class Profile extends Component {
       <div className="reviewClass" id={reviewData._id} key={reviewData._id}>
         <p>From: {reviewData.reviewer}</p>
         <p>Rating: {reviewData.rating}⭐</p>
-        <p>Message:{reviewData.message}</p>
+        <p>
+          Message:
+          {reviewData.message}
+        </p>
       </div>
-      
     );
-    this.state.reviewPoints.push(reviewData.rating)
+    this.state.reviewPoints.push(reviewData.rating);
     this.getReviewAverage();
     ReactDOM.render(reviewItem, document.getElementById("reviewDiv"));
   };
@@ -106,14 +119,16 @@ class Profile extends Component {
         <div className="reviewClass" id={review._id} key={review._id}>
           <p>From: {review.reviewer}</p>
           <p>Rating: {review.rating}⭐</p>
-          <p>Message: <br/>{review.message}</p>
+          <p>
+            Message: <br />
+            {review.message}
+          </p>
           {this.state.reviewPoints.push(review.rating)}
         </div>
-        
       ));
+      ReactDOM.render(reviewItems, document.getElementById("reviewDiv"));
 
       this.getReviewAverage();
-      ReactDOM.render(reviewItems, document.getElementById("reviewDiv"));
     });
   };
 
@@ -350,79 +365,77 @@ class Profile extends Component {
                 </FormGroup>
                 <button onClick={this.handleFormSubmit}>Update Profile</button>
               </Form>
-              </CardBody>
-              </Card>
-              
-                <Card>
-                  <CardHeader>
-                  <h1>Rating : {this.state.average}⭐</h1>
-                    </CardHeader>
-                  <CardBody>
-                    <Form>
-                      <FormGroup>
-                        <h1>Leave a Review</h1>
-                        <Label for="exampleSelect">Rating</Label>
-                        <Input
-                          type="select"
-                          name="rating"
-                          id="exampleSelect"
-                          onChange={this.handleInputChange}
-                          value={this.state.rating}
-                          // onClick={console.log(this.state.rating)}
-                        >
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </Input>
-                      </FormGroup>
-                      <FormGroup>
-                        <Label for="exampleText">Review</Label>
-                        <Input
-                          type="textarea"
-                          name="message"
-                          id="exampleText"
-                          onChange={this.handleInputChange}
-                          value={this.state.message}
-                        />
-                      </FormGroup>
-                      <Popover
-                        id="Popover1"
-                        placement="bottom"
-                        isOpen={this.state.popoverOpen}
-                        target="Popover1"
-                        toggle={this.toggle}
-                      >
-                        <PopoverHeader>Thanks For The Review</PopoverHeader>
-                        <PopoverBody id="myPopover" placement="bottom">
-                          You've earned a KarmaChip! (˚◒˚)
-                          <br />
-                          <Button onClick={this.toggle}>Close</Button>
-                        </PopoverBody>
-                      </Popover>
-                      <Button
-                        id="Popover1"
-                        disabled={!this.state.message || !this.state.rating}
-                        style={{ margin: "auto" }}
-                        onClick={this.handleFormSubmit2}
-                        toggle={this.toggle}
-                      >
-                        Post
-                      </Button>
-                    </Form>
-                    <div id="reviewDiv" />
-                    <Link to={`/messaging/${this.props.username}`}>
-                      Messaging
-                    </Link>
-                    {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
-                    {/* {console.log("/messaging/" + this.props.username)} */}
-                    {/* <Link to={`/messaging/${this.props.username}`}>
+            </CardBody>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <h1>Rating : {this.state.average}⭐</h1>
+            </CardHeader>
+            <CardBody>
+              <Form>
+                <FormGroup>
+                  <h1>Leave a Review</h1>
+                  <Label for="exampleSelect">Rating</Label>
+                  <Input
+                    type="select"
+                    name="rating"
+                    id="exampleSelect"
+                    onChange={this.handleInputChange}
+                    value={this.state.rating}
+                    // onClick={console.log(this.state.rating)}
+                  >
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Input>
+                </FormGroup>
+                <FormGroup>
+                  <Label for="exampleText">Review</Label>
+                  <Input
+                    type="textarea"
+                    name="message"
+                    id="exampleText"
+                    onChange={this.handleInputChange}
+                    value={this.state.message}
+                  />
+                </FormGroup>
+                <Popover
+                  id="Popover1"
+                  placement="bottom"
+                  isOpen={this.state.popoverOpen}
+                  target="Popover1"
+                  toggle={this.toggle}
+                >
+                  <PopoverHeader>Thanks For The Review</PopoverHeader>
+                  <PopoverBody id="myPopover" placement="bottom">
+                    You've earned a KarmaChip! (˚◒˚)
+                    <br />
+                    <Button onClick={this.toggle}>Close</Button>
+                  </PopoverBody>
+                </Popover>
+                <Button
+                  id="Popover1"
+                  disabled={!this.state.message || !this.state.rating}
+                  style={{ margin: "auto" }}
+                  onClick={this.handleFormSubmit2}
+                  toggle={this.toggle}
+                >
+                  Post
+                </Button>
+              </Form>
+              <div id="reviewDiv" />
+              <Link to={`/messaging/${this.props.username}`}>Messaging</Link>
+              {/* {this.state.loggedIn && <Route path="/browse" component={Browse} />} */}
+              {/* {console.log("/messaging/" + this.props.username)} */}
+              {/* <Link to={`/messaging/${this.props.username}`}>
                       Messaging
                     </Link> */}
-                    {/* </Form> */}
-                  </CardBody>
-              </Card>
+              {/* </Form> */}
+            </CardBody>
+          </Card>
         </Container>
       </section>
     );

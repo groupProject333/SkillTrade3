@@ -7,6 +7,7 @@ export default {
 	},
 	getUser: function(username) {
 		console.log('here API');
+		console.log(username);
 		return axios.get('/user/' + username);
 	},
 	sendMessage: function(receiverData) {
@@ -38,6 +39,10 @@ export default {
 	getReviewBody: function(id) {
 		console.log('hit review api  ' + id);
 		return axios.get('/api/profiles/reviews/' + id);
+	},
+	getNewProfile: function(username) {
+		console.log('hit review api  ' + username);
+		return axios.get('/api/profiles/otherUser/' + username)
 	},
 	getProfile: function(id) {
 		axios.get('/api/profiles/exist/' + id).then(function(response) {

@@ -8,8 +8,10 @@ import UserProfile from "../userprofile";
 class UserProfiles extends Component {
 
   
-    
-    state = {
+    constructor (props) {
+        super(props)
+
+    this.state = {
         usr: this.props.username,
         profile: [],
         _id: "",
@@ -25,7 +27,7 @@ class UserProfiles extends Component {
         dateJoined: "",
         listings: []
     };
-
+    }
     // getID() {
     //   const userID = props =>  (
     //     props.id

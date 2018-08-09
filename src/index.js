@@ -8,12 +8,11 @@ import { BrowserRouter } from 'react-router-dom' //may help sessions store cooki
 //so that you don't need to specify this in every axios request
 
 //style
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-import 'spectre.css/dist/spectre.min.css';
-import 'spectre.css/dist/spectre-icons.css';
+// import 'spectre.css/dist/spectre.min.css';
+// import 'spectre.css/dist/spectre-icons.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

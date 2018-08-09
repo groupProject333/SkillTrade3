@@ -64,9 +64,25 @@ class Messaging extends Component {
   };
   getMessageBody = id => {
     console.log(id);
+    console.log(this.state.messageProps)
     API.getMessageBody(id).then(res => {
-      this.state.messageProps.push(res);
+      console.log(res)
+      if (this.state.messageProps.length > 0) {
+        for (var i = 0; i < this.state.messageProps.length; i++) {
+          if (this.state.messageProps[i].data[0]._id !== res.data[0]._id) {
+            console.log(this.state.messageProps[i].data[0]._id);
+            console.log(res.data[0]._id)
+            this.state.messageProps.push(res);
+            break;
+
+          }
+        }
+      }
+      else {
+        this.state.messageProps.push(res);
+      }
     });
+    console.log(this.state.messageProps);
   };
   displayMessages = event => {
     event.preventDefault();
@@ -84,10 +100,12 @@ class Messaging extends Component {
   removeMessage = id => {
     console.log(id + "LINE 84!!!!!!!!!!!!!!!!!!!!!!!!1");
     // document.getElementById(id).remove();
-    ReactDOM.unmountComponentAtNode(id);
+    // ReactDOM.unmountComponentAtNode(id);
   };
   deleteFromProps = id => {
     console.log(this.state.messageProps[0].data);
+    ReactDOM.unmountComponentAtNode(document.getElementById("messageDiv"));
+
     // var mongoose = require("mongoose");
     // id = ObjectId(id).str;
     console.log(id);
@@ -99,7 +117,13 @@ class Messaging extends Component {
       if (this.state.messageProps[i].data[0]._id == id) {
         console.log("118");
         this.state.messageProps.splice(i, 1);
+        // this.setState({
+        //   messageProps: this.state.messageProps.filter(el => el._id !== id)
+
+        // })
+
         console.log(this.state.messageProps);
+        this.forceUpdate();
         this.provideMessagesB();
         break;
       } else {
@@ -139,13 +163,13 @@ class Messaging extends Component {
         body: "",
         receiver: ""
       });
-      console.log("142");
-      this.getUser(this.props.username);
     });
+    console.log("142");
+    this.getUser(this.props.username);
   };
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this.state.receiver + " " + this.state.body)
+    console.log(this.state.receiver + " " + this.state.body);
     var info = [];
     console.log(this.props.username + "LINE 109!!!!!!!!!!!!!!!!!!");
     if (this.state.receiver && this.state.body) {
@@ -179,10 +203,10 @@ class Messaging extends Component {
     console.log(this.state.receiver);
   };
   provideMessagesB = () => {
-    document.getElementById("messageDiv").innerHTML = "";
+    // document.getElementById("messageDiv").innerHTML = "";
     if (this.state.messageProps.length === 0) {
       this.setState({ popoverOpen: true });
-      document.getElementById("messageDiv").innerHTML = "";
+      // document.getElementById("messageDiv").innerHTML = "";
     } else {
       console.log(this.state.messageProps);
       let data = this.state.messageProps;
@@ -214,7 +238,7 @@ class Messaging extends Component {
               Reply
             </Button>
             <UncontrolledCollapse toggler="#toggler">
-              <Card color = "danger">
+              <Card color="danger">
                 <CardBody>
                   <Form>
                     <FormGroup>
@@ -227,13 +251,13 @@ class Messaging extends Component {
                         // value={this.state.bodyReply}
                         bsSize="lg"
                       />
-                    <Button
-                      // disabled={!(this.state.body)}
-                      style={{ margin: "auto" }}
-                      onClick={this.handleFormSubmit}
-                    >
-                      Send Message
-                    </Button>
+                      <Button
+                        // disabled={!(this.state.body)}
+                        style={{ margin: "auto" }}
+                        onClick={this.handleFormSubmit}
+                      >
+                        Send Message
+                      </Button>
                     </FormGroup>
                   </Form>
                 </CardBody>
@@ -327,7 +351,7 @@ class Messaging extends Component {
             {/* <h2>You have {this.state.messageBody.length} messages</h2> */}
             <h3>Send Message</h3>
             <Form ref="form">
-            <FormGroup>
+              <FormGroup>
                 <Label for="exampleEmail">User</Label>
                 <Input
                   type="textarea"
@@ -413,9 +437,7 @@ class Messaging extends Component {
               >
                 Send Message
               </Button>
-              <h1>
-                Inbox
-              </h1>
+              <h1>Inbox</h1>
               <Button
                 onClick={this.provideMessagesB}
                 color="success"
@@ -442,8 +464,6 @@ class Messaging extends Component {
                   );
 //                 }) */}
                 {/* }}>View Messages</button> */}
-
-                
               </MessageList>
             </Form>
           </CardBody>

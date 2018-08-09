@@ -13,7 +13,7 @@ import UserProfiles from "./components/pages/userprofiles";
 import Browse from "./components/Listing/browse";
 import Profile from "./components/Profile/profile";
 // import Ranking from './components/pages/topusers';
-import addListing from './components/Listing/addListing'
+import Listing from './components/Listing/addListing'
 import {Container, Card, CardBody} from 'reactstrap'
 
 import Messaging from './components/Message/messaging';
@@ -73,7 +73,14 @@ class App extends Component {
 
   render() {
     return (
+      
       <section className="App Site">
+                <Route
+            path="/userprofile/:username"
+            render={props => (
+              <UserProfiles username={props.match.params.username} />
+            )}
+          />
         {/* <Wrapper> */}
         <section className="Site-Content">
           <Navbar2
@@ -113,18 +120,12 @@ class App extends Component {
               )}
             />
           )}
-          <Route
-            path="/userprofile/:username"
-            render={props => (
-              <UserProfiles username={props.match.params.username} />
-            )}
-          />
 
           {this.state.loggedIn && (
             <Route
               path="/addListing"
               render={() => (
-                <addListing username={this.state.username} id={this.state.id} />
+                <Listing username={this.state.username} id={this.state.id} />
               )}
             />
           )}{" "}
@@ -137,7 +138,7 @@ class App extends Component {
           {this.state.loggedIn && (
             <Route
               path="/browse"
-              render={() => <Browse username={this.state.username} />}
+              // render={() => <Browse username={this.state.username} />}
             />
           )}
         </section>

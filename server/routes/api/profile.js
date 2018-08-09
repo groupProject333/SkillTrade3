@@ -13,7 +13,8 @@ router.route("/all")
 
 router.route("/username/:username")
     .get(profileController.getProfilebyUsername);
-
+router.route('/otherUser/:username')
+    .get(profileController.getNewProfile);
 router.route("/exist/:id/:username")
     .get(profileController.checkIfProfileExists);
 router.route("/post")
