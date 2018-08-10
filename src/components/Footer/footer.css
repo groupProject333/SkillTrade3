@@ -8,4 +8,6 @@
     background-color: limegreen;
     color:white;
     margin-top: 5vh;
+    padding-top:2vh;
+    position: fixed bottom;
 }

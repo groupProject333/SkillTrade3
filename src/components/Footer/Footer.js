@@ -8,7 +8,9 @@ class Footer extends Component {
         <section id="foot">
         <Container>
                 <h4 id= "footText" className="text-center">
-                    Bringing Community Members Together since 2018.
+                    &copy;
+                    &nbsp;
+                    2018 Ben, Chelsea, Justin, Lucy
                 </h4>
         </Container>
     </section>

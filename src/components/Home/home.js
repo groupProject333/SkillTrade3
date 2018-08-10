@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import Search from "../Search";
 import DemoCarousel from "../Carousel";
 import Logo from "../Logo";
+import {Container} from 'reactstrap';
   
 class Home extends Component {
   
 // if (loggedIn) {
   render() {
     return (
-      <div>
+      <Container className="text-center">
         <Logo/>
           <DemoCarousel/>
           <Search/>
-      </div>
+      </Container>
     );
   }
 // }

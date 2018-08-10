@@ -4,23 +4,25 @@ import "./search.css";
 
 const Search = (props) => {
     return (
-        <Container id="search">
-            <Card id="contain">
-            <CardHeader>
-                    <h2 className="text-center text-success">
+        <Container>
+            <Card id="search">
+                <CardHeader>
+                    <h2 className="text-center" id="serText">
                         Welcome to Skill-Trade!
                     </h2>
-                    </CardHeader>
-                    <CardBody>
+                </CardHeader>
+                <CardBody>
                     <Form>
                         <FormGroup>
                             {/* <Label for="search" id="label">Search</Label> */}
-                            <Input type="text" name="search" id="field" placeholder="Search Listings" large className = "text-center"/>
+                            <Input type="text" name="search" id="field" placeholder="Search Listings" className = "text-center"/>
                         </FormGroup>
-                        <Button id="btn2">Submit</Button>
-                        </Form>
-                        </CardBody>
-                </Card>
+                        <Button id="btn2">
+                            Submit
+                        </Button>
+                    </Form>
+                </CardBody>
+            </Card>
         </Container>
     );
 };

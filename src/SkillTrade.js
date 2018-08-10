@@ -89,12 +89,14 @@ class App extends Component {
           />
           {/* greet user if logged in: */}
           {this.state.loggedIn && (
-            <Container id = "welcome">
-            <Card>
-            <h1 id="welcomeText">
-              WELCOME, {this.state.username.toUpperCase()} TO SKILLTRADE!
-            </h1>
-            </Card>
+            <Container>
+              <Card>
+                <CardBody>
+                  <h1>
+                    WELCOME, {this.state.username.toUpperCase()} TO SKILLTRADE!
+                  </h1>
+                </CardBody>
+              </Card>
             </Container>
           )}
           {/* Routes to different components */}
