@@ -74,8 +74,8 @@ class Navbar2 extends Component {
     return (
       <section id="navMargin">
             <Navbar color="light" light expand="md">
-            <NavbarBrand>
-              Skill Trade
+              <NavbarBrand id="navText">
+                SkillTrade
               </NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
@@ -84,7 +84,7 @@ class Navbar2 extends Component {
                   <section className="float-left">
                     <NavItem className='logoutBtn'>
                       <Link to="/" id="navText" onClick={this.logout}>
-                        <span className="text-success logoutBtn">
+                        <span className="logoutBtn">
                         Logout
                         </span>
                       </Link>
@@ -95,7 +95,7 @@ class Navbar2 extends Component {
                     <section className="float-left">
                       <NavItem className='loginBtn'>
                         <Link to="/login">
-                          <span id="navText" className="text-success">
+                          <span id="navText">
                             Login
                           </span>
                         </Link>
@@ -104,7 +104,7 @@ class Navbar2 extends Component {
                     <section className="float-right">
                       <NavItem className='signupBtn'>
                         <Link to="/signup">
-                          <span id="navText" className="text-success">
+                          <span id="navText">
                             Sign-Up
                           </span>
                         </Link>
@@ -112,18 +112,10 @@ class Navbar2 extends Component {
                     </section>
                   </section>
                 )}
-                <NavItem>
-                  <NavLink
-                    target="_blank"
-                    id= "navText"
-                    href="https://github.com/groupProject333/SkillTrade2"
-                  >
-                    GitHub
-                  </NavLink>
-                </NavItem>
+              
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
-                    <span id="navText" className="text-success">
+                    <span id="navText">
                       Options
                     </span>
                   </DropdownToggle>
@@ -131,7 +123,7 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/browse">
-                          <span id="navText" className="text-success">
+                          <span id="navText">
                             Browse
                           </span>
                         </Link>
@@ -140,7 +132,7 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/profile">
-                          <span id="navText" className="text-success">
+                          <span id="navText">
                             Profile
                           </span>
                         </Link>
@@ -149,7 +141,7 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/addListing">
-                          <span id="navText" className="text-success">
+                          <span id="navText">
                           New Listing
                           </span>
                         </Link>
@@ -158,14 +150,21 @@ class Navbar2 extends Component {
                     <DropdownItem>
                       <NavItem>
                         <Link to="/messaging/">
-                          <span id="navText" className="text-success">
+                          <span id="navText">
                             Messages
                           </span>
                         </Link>
                       </NavItem>
                     </DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Reset</DropdownItem>
+                    <DropdownItem>
+                    <NavItem>
+                      <NavLink target="_blank" id= "navText" href="https://github.com/groupProject333/SkillTrade3">
+                      GitHub
+                    </NavLink>
+                </NavItem>
+                    </DropdownItem>
+                    <DropdownItem id="navText">Reset</DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </Nav>
